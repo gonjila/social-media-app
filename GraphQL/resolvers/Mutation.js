@@ -85,6 +85,9 @@ const Mutation = {
     },
     createPost: async (parent, { body }, ctx) => {
         const user = checkAuth(ctx);
+        if (body.trim() === "") {
+            throw new Error("Post body must not be empty!");
+        }
         const newPost = new Post({
             body,
             user: user.id,
