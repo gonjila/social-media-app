@@ -4,3 +4,8 @@
     margin-top: 10px;
     font-size: 3rem;
 }
+
+.form_container {
+    max-width: 400px;
+    margin: auto;
+}
