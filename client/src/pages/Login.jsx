@@ -18,7 +18,7 @@ function Login() {
         update(proxy, result) {
             console.log("%clogin update", "color:#FF0000", result.data.login);
             login(result.data.login);
-            // navigate("/");
+            navigate("/");
         },
         // graphQLის სერვერიდან რამე ერორი თუ წამოვა აქ მოხვდება.
         onError(err) {

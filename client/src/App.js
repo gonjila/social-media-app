@@ -28,12 +28,8 @@ function App() {
                 <MenuBar />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    {/* {!userData && (
-                        <> */}
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    {/* </>
-                    )} */}
                 </Routes>
             </Suspense>
         </Container>
