@@ -1,20 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { useMutation, gql } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
 import { useForm } from "../utils/hooks";
+import { authContext } from "../context/auth";
 
 function Register() {
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
-
     const initialState = { username: "", email: "", password: "", confirmPassword: "" };
     const { onChange, onSubmit, values } = useForm(registerUser, initialState);
+    const { login } = useContext(authContext);
 
     // პირველი არის ფუნქცია რომლითაც მუტაცია ხდება და მეორე useQueryს თემაა.
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
         update(proxy, result) {
+            login(result.data.login);
             navigate("/");
         },
         // graphQLის სერვერიდან რამე ერორი თუ წამოვა აქ მოხვდება.

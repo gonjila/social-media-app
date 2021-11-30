@@ -12,7 +12,7 @@ const resolvers = { ...listOfResolvers };
 const context = ({ req }) => ({ req, pubsub });
 
 const server = new ApolloServer({ typeDefs, resolvers, context });
-// sTmQMpdwv6q2UENi
+
 mongoose
     .connect(MONGODB, { useNewUrlParser: true })
     .then(() => {

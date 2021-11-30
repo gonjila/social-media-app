@@ -1,6 +1,8 @@
 import ReactDOM from "react-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { BrowserRouter } from "react-router-dom";
 
+import { AuthProvider } from "./context/auth";
 import App from "./App";
 import "semantic-ui-css/semantic.min.css";
 
@@ -11,7 +13,11 @@ const client = new ApolloClient({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        <App />
+        <AuthProvider>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </AuthProvider>
     </ApolloProvider>,
     document.getElementById("root")
 );
