@@ -8,6 +8,7 @@ import MenuBar from "./components/MenuBar";
 import Home from "./pages/Home";
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
+const SinglePost = lazy(() => import("./pages/SinglePost"));
 
 function App() {
     const navigate = useNavigate();
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/posts/:postId" element={<SinglePost />} />
                 </Routes>
             </Suspense>
         </Container>

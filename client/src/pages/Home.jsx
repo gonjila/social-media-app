@@ -26,7 +26,7 @@ function Home() {
                     {loading ? (
                         <h1>Loading posts...</h1>
                     ) : (
-                        <Transition.Group duration={200} divided size="huge" verticalAlign="middle">
+                        <Transition.Group duration={500} divided size="huge" verticalAlign="middle">
                             {data?.getPosts.map((post) => (
                                 <Grid.Column key={post.id}>
                                     <PostCard post={post} />

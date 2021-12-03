@@ -5,6 +5,7 @@ import moment from "moment";
 
 import { authContext } from "../context/auth";
 import LikeButton from "./LikeButton";
+import DeleteButton from "./DeleteButton";
 
 function PostCard(props) {
     const { id, username, body, createdAt, likes, likeCount, commentCount } = props.post;
@@ -34,11 +35,7 @@ function PostCard(props) {
                         {commentCount}
                     </Label>
                 </Button>
-                {userData && userData.username === username && (
-                    <Button as="div" color="red" floated="right" onClick={() => console.log("delete post")}>
-                        <Icon name="trash" style={{ margin: 0 }} />
-                    </Button>
-                )}
+                {userData && userData.username === username && <DeleteButton postId={id} />}
             </Card.Content>
         </Card>
     );
