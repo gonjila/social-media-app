@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { useQuery, gql } from "@apollo/client";
-import { Grid } from "semantic-ui-react";
+import { useQuery } from "@apollo/client";
+import { Grid, Transition } from "semantic-ui-react";
 
 import { authContext } from "../context/auth";
 import { FETCH_POSTS_QUERY } from "../utils/graphql";
@@ -26,11 +26,13 @@ function Home() {
                     {loading ? (
                         <h1>Loading posts...</h1>
                     ) : (
-                        data?.getPosts.map((post) => (
-                            <Grid.Column key={post.id}>
-                                <PostCard post={post} />
-                            </Grid.Column>
-                        ))
+                        <Transition.Group duration={200} divided size="huge" verticalAlign="middle">
+                            {data?.getPosts.map((post) => (
+                                <Grid.Column key={post.id}>
+                                    <PostCard post={post} />
+                                </Grid.Column>
+                            ))}
+                        </Transition.Group>
                     )}
                 </Grid.Row>
             </Grid>

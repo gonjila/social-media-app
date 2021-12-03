@@ -1,5 +1,5 @@
-import { Form, Button } from "semantic-ui-react";
 import { useMutation, gql } from "@apollo/client";
+import { Form, Button } from "semantic-ui-react";
 
 import { useForm } from "../utils/hooks";
 import { FETCH_POSTS_QUERY } from "../utils/graphql";
@@ -24,13 +24,29 @@ function PostForm() {
     }
 
     return (
-        <Form onSubmit={onSubmit}>
-            <h2>Create a post:</h2>
-            <Form.Input label="body" name="body" type="text" onChange={onChange} value={values.body} />
-            <Button type="submit" color="teal">
-                Submit
-            </Button>
-        </Form>
+        <>
+            <Form onSubmit={onSubmit}>
+                <h2>Create a post:</h2>
+                <Form.Input
+                    label="body"
+                    name="body"
+                    type="text"
+                    error={error ? true : false}
+                    value={values.body}
+                    onChange={onChange}
+                />
+                <Button type="submit" color="teal">
+                    Submit
+                </Button>
+            </Form>
+            {error && (
+                <div className="ui error message" style={{ marginBottom: "15px" }}>
+                    <ul className="list">
+                        <li>{error.graphQLErrors[0].message}</li>
+                    </ul>
+                </div>
+            )}
+        </>
     );
 }
 
